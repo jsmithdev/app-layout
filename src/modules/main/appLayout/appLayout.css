@@ -151,3 +151,24 @@ svg {
                 }
         }
 }
+
+@media only screen and (min-width: 1200px) {
+      .menu {
+        display: none;
+      }
+      .content {
+        grid-template-areas:
+          "drawer content";
+        display: grid;
+        grid-template-columns: 10rem auto;
+        overflow: auto hidden;
+        grid-template-rows: auto;
+        height: -webkit-fill-available;
+    }
+    .content.open {
+        animation: none;
+    }
+    .content.close {
+        animation: none;
+    }
+}

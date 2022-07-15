@@ -12,6 +12,14 @@ export default class AppLayout extends LightningElement {
     @api subheader = 'A Subheading...';
     @api sideItems = []
 
+    get isLarge(){
+        return window.innerWidth > 1200;
+    }
+
+    get content(){
+        return this.template.querySelector('.content')
+    }
+
     renderedCallback(){
         this.template.querySelector('.menu')
             .appendChild(document.createElement('menu-icon'))
@@ -22,24 +30,48 @@ export default class AppLayout extends LightningElement {
     }
 
     toggleDrawer(){
-        
-        const el = this.template.querySelector('.content')
 
         this.isDrawer = this.isDrawer ? false : true;
 
         if(this.isDrawer){
-            el.classList.remove('close')
-            el.classList.add('open');
+            this.content.classList.remove('close')
+            this.content.classList.add('open');
         }
         else {
-            el.classList.remove('open');
-            el.classList.add('close')
+            this.content.classList.remove('open');
+            this.content.classList.add('close')
         }
     }
 
     closeDrawer(){
-        this.template.querySelector('menu-icon').toggle();
+        if(!this.isLarge) this.template.querySelector('menu-icon').toggle();
         this.toggleDrawer();
     }
 
+    connectedCallback(){
+        this.addEventListeners();
+    }
+
+    addEventListeners(){
+        window.addEventListener('resize', () => this.resize())
+    }
+
+    resize(){
+        
+        if(this.wasLarge === this.isLarge) return;
+
+        if(this.isLarge){
+            this.isDrawer = true;
+            this.content.classList.remove('close');
+            this.content.classList.add('open')
+            this.template.querySelector('menu-icon').toggle(false);
+        }
+        else {
+            this.isDrawer = false;
+            this.content.classList.remove('open');
+            this.content.classList.add('close')
+            this.template.querySelector('menu-icon').toggle(false);
+        }
+        this.wasLarge = this.isLarge;
+    }
 }
