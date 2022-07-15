@@ -36,15 +36,17 @@ export default class AppLayout extends LightningElement {
         if(this.isDrawer){
             this.content.classList.remove('close')
             this.content.classList.add('open');
+            if(!this.isLarge) this.template.querySelector('menu-icon').toggle(true);
         }
         else {
             this.content.classList.remove('open');
             this.content.classList.add('close')
+            if(!this.isLarge) this.template.querySelector('menu-icon').toggle(false);
         }
     }
 
     closeDrawer(){
-        if(!this.isLarge) this.template.querySelector('menu-icon').toggle();
+        if(!this.isLarge) this.template.querySelector('menu-icon').toggle(false);
         this.toggleDrawer();
     }
 
@@ -57,7 +59,7 @@ export default class AppLayout extends LightningElement {
     }
 
     resize(){
-        
+
         if(this.wasLarge === this.isLarge) return;
 
         if(this.isLarge){
