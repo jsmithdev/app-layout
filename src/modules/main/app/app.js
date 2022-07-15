@@ -11,29 +11,21 @@ export default class App extends LightningElement {
 	offline = false;
 	hideViews = false;
 	loading = false;
+	
+	get toaster(){
+		return this.template.querySelector('ui-toast')
+	}
 
-	@track toast = {
-		title: 'Default title',
-		message: 'Default message',
-		variant: 'info',
-		classes: 'toast close',
-		mode: 'closeable',
-		open: (event) => {
+	/**
+	 * 
+	 * @param {CustomEvent} e - event who's detail is used to toast (falsey will close)
+	 * @returns 
+	 */
+	toast(e){
 
-			const { title, message, variant, mode, duration } = event.detail;
+		if(!e) return this.toaster.close();
 
-			this.toast.title = title ? title : '';
-			this.toast.message = message;
-			this.toast.variant = variant;
-			this.toast.classes = 'toast';
-
-			if (mode !== 'sticky') {
-				setTimeout(() => this.toast.close(), duration || 4000);
-			}
-		},
-		close: () => {
-			this.toast.classes = 'toast close';
-		}
+		this.toaster.open(e);
 	}
 
 	async connectedCallback() {
@@ -64,8 +56,6 @@ export default class App extends LightningElement {
 		window.addEventListener('online', () => this.isOnline());
 
 		window.addEventListener('offline', () => this.isOffline());
-
-		window.addEventListener('toast', e => this.toast.open( e ));
 	}
 
 	isOnline() {
