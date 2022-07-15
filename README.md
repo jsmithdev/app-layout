@@ -2,6 +2,8 @@
 
 WIP: An app layout for LWC
 
+Demo: [https://jsmithdev.github.io/app-layout/](https://jsmithdev.github.io/app-layout/)
+
 ## Development
 
 `npm i` to install dependencies
