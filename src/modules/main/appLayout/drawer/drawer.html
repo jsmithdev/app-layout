@@ -1,0 +1,14 @@
+<template>
+    <div class="drawer-container">
+        <h2>Menu</h2>
+        <template for:each={links} for:item="item">
+            <div 
+                class="item" 
+                onclick={navigate}
+                data-name={item.name}
+                key={item.key}>
+                {item.label}
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,25 @@
+<template>
+
+    <div class="container">
+
+        <div class="bar">
+            <div 
+                class="menu" 
+                lwc:dom="manual"
+                onclick={toggleDrawer}></div>
+        </div>
+        
+        <div class="content">
+    
+            <div 
+                class="drawer"
+                onnavigate={closeDrawer}
+                lwc:dom="manual">
+            </div>
+    
+            <div class="view">
+                <slot name="content"></slot>
+            </div>
+        </div>
+    </div>
+</template>

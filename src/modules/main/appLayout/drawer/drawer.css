@@ -1,0 +1,18 @@
+.drawer-container {
+	padding-left: 0.5rem;
+	user-select: none;
+	color: var(--color-dark);
+}
+.item {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+  cursor: pointer;
+  user-select: none;
+}
+.item:hover {
+	color: var(--color-quaternary);
+}

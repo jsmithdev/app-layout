@@ -1,0 +1,20 @@
+<template>
+	<div class="app">
+
+		<div class={toast.classes}>
+		</div>
+		
+		<main-app-layout
+			header="App Layout"
+			subheader="App Layout"
+			onnavigate={navigate}
+			side-items={things}>
+			
+			<span slot="content">
+				<main-view
+					view={currentView}
+				></main-view>
+			</span>
+		</main-app-layout>
+	</div>
+</template>
