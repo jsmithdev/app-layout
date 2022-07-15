@@ -7,7 +7,7 @@ svg {
 
 /* whole viewport */
 .container {
-    height: 100vh;
+    height: -webkit-fill-available;
     width: 100vw;
     margin-top: 4rem;
 }
@@ -22,6 +22,21 @@ svg {
     top: 0;
     left: 0;
     z-index: 100;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    user-select: none;
+}
+.title {
+        text-align: center;
+        line-height: 4rem;
+}
+.right {
+        direction: rtl;
+        line-height: 4rem;
+        margin-right: 1rem;
+        cursor: pointer;
 }
 
 /* container for everything under top bar */

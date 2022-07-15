@@ -8,8 +8,8 @@ customElements.define('menu-drawer', Drawer.CustomElementConstructor);
 
 export default class AppLayout extends LightningElement {
 
-    @api header = 'The Heading';
-    @api subheader = 'A Subheading...';
+    @api appName = 'App Layout';
+    @api menuHeader = 'Menu';
     @api sideItems = []
 
     get isLarge(){
@@ -75,5 +75,20 @@ export default class AppLayout extends LightningElement {
             this.template.querySelector('menu-icon').toggle(false);
         }
         this.wasLarge = this.isLarge;
+    }
+
+    toastExample(){
+
+        const vars = ['success', 'info', 'warning', 'error'];
+        const variant = vars[Math.floor(Math.random() * vars.length)]
+
+        this.dispatchEvent(new CustomEvent('toast', {
+            bubbles: true,
+            composed: true,
+            detail: {
+                variant,
+                message: 'meow... prrrrr...',
+            }
+        }))
     }
 }

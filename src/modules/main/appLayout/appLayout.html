@@ -7,12 +7,19 @@
                 class="menu" 
                 lwc:dom="manual"
                 onclick={toggleDrawer}></div>
+
+            <div class="title">{appName}</div>
+
+            <div class="right" onclick={toastExample}>
+                😺
+            </div>
         </div>
         
         <div class="content">
     
             <div 
                 class="drawer"
+                header={menuHeader}
                 onnavigate={closeDrawer}
                 lwc:dom="manual">
             </div>
