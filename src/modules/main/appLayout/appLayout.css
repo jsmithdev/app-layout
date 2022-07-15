@@ -35,11 +35,11 @@ svg {
     height: -webkit-fill-available;
 }
 .content.open {
-    animation: open 125ms ease-in both;
+    animation: open 75ms ease-in both;
     transition-timing-function: cubic-bezier(0.42, 0, 1, 1);
 }
 .content.close {
-    animation: close 125ms ease-out both;
+    animation: close 75ms ease-out both;
     transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
 }
 
@@ -86,22 +86,68 @@ svg {
 }
 @keyframes close {
 	0% {
-        grid-template-columns: 40fr 60fr;
+                grid-template-columns: 40fr 60fr;
 	}
 	
 	25% {
-        grid-template-columns: 30fr 70fr;
+                grid-template-columns: 30fr 70fr;
 	}
 	
 	50% {
-        grid-template-columns: 20fr 80fr;
+                grid-template-columns: 20fr 80fr;
 	}
 	
 	75% {
-        grid-template-columns: 10fr 90fr;
+                grid-template-columns: 10fr 90fr;
 	}
 	
 	100% {
-        grid-template-columns: 0px 100fr;
+                grid-template-columns: 0px 100fr;
 	}
+}
+
+@media only screen and (max-width: 600px) {
+                
+        @keyframes open {
+                0% {
+                        grid-template-columns: 0px 100fr;
+                }
+                
+                25% {
+                        grid-template-columns: 15fr 85fr;
+                }
+                
+                50% {
+                        grid-template-columns: 25fr 75fr;
+                }
+                
+                75% {
+                        grid-template-columns: 40fr 60fr;
+                }
+                
+                100% {
+                        grid-template-columns: 60fr 40fr;
+                }
+        }
+        @keyframes close {
+                0% {
+                        grid-template-columns: 60fr 40fr;
+                }
+                
+                25% {
+                        grid-template-columns: 40fr 60fr;
+                }
+                
+                50% {
+                        grid-template-columns: 25fr 75fr;
+                }
+                
+                75% {
+                        grid-template-columns: 15fr 85fr;
+                }
+                
+                100% {
+                        grid-template-columns: 0px 100fr;
+                }
+        }
 }

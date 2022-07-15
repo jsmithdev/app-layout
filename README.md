@@ -14,8 +14,6 @@ Demo: [https://jsmithdev.github.io/app-layout/](https://jsmithdev.github.io/app-
 
 > During build [webpack](https://webpack.js.org/) uses the common (prod or dev) [webpack.config.js](./webpack.config.js)
 
-## Project
+## About
 
-### Lightning Web Components (LWC)
-
-[LWC](https://lwc.dev) is an _"enterprise-grade, open source, standards-based web component framework"_ from Salesforce
+> [Lightning Web Components (LWC)](https://lwc.dev) is an _"enterprise-grade, open source, standards-based web component framework"_
