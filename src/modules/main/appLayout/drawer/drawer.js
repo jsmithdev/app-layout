@@ -2,6 +2,7 @@ import { api, LightningElement } from 'lwc';
 
 export default class Drawer extends LightningElement {
 
+    @api header = 'Menu'
     @api items = []
 
     get links(){
@@ -12,6 +13,14 @@ export default class Drawer extends LightningElement {
             key: `side${i}`
         }))
     }
+    get version() {
+		try {
+			// eslint-disable-next-line no-undef
+			return `v${__VERSION__}`;
+		} catch (e) {
+			return false;
+		}
+	}
 
     navigate(event){
         
@@ -25,4 +34,5 @@ export default class Drawer extends LightningElement {
             }
         }))
     }
+
 }

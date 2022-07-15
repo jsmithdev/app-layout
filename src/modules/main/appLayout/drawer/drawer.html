@@ -1,14 +1,30 @@
 <template>
     <div class="drawer-container">
-        <h2>Menu</h2>
-        <template for:each={links} for:item="item">
-            <div 
-                class="item" 
-                onclick={navigate}
-                data-name={item.name}
-                key={item.key}>
-                {item.label}
-            </div>
-        </template>
+        
+        <div class="header">
+            <h2>{header}</h2>
+        </div>
+        
+        <div class="items">
+            <template for:each={links} for:item="item">
+                <div 
+                    class="item" 
+                    onclick={navigate}
+                    data-name={item.name}
+                    key={item.key}>
+                    {item.label}
+                </div>
+            </template>
+        </div>
+        
+        
+        <div class="footer">
+            <template if:true={version}>
+                <div class="version-container">
+                    <p class="version">{version}</p>
+                </div>
+            </template>
+        </div>
+        
     </div>
 </template>
