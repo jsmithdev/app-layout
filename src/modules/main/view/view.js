@@ -9,7 +9,7 @@ export default class View extends LightningElement {
 	set view(view){
 		if(!view || this.view === view) return;
 		this._view = view;
-		if(this._rended) this.swapViews(view);
+		if(this._rended) this.swapViews();
 	}
 
 	get container(){
@@ -17,31 +17,17 @@ export default class View extends LightningElement {
 	}
 
 	renderedCallback(){
-		if(!this._rended){
-			this.swapViews(this.view)
-		}
+		if(!this._rended) this.swapViews();
 		this._rended = true
 	}
 
-	swapViews(name){
+	swapViews(){
 
 		while (this.container.lastElementChild) {
 			this.container.removeChild(this.container.lastElementChild);
 		}
 		this.container.appendChild( 
-			document.createElement(`views-${name}`)
+			document.createElement(`views-${this.view}`)
 		);
-	}
-
-	reload(hard) {
-		if (hard) {
-			const form = document.createElement('form');
-			form.method = 'GET';
-			form.action = window.location.href;
-			document.body.appendChild(form);
-			form.submit();
-		} else {
-			window.location.reload();
-		}
 	}
 }
