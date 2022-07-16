@@ -22,9 +22,21 @@ export default class Drawer extends LightningElement {
 		}
 	}
 
+    /**
+     * highlight first in list on init
+     */
+    renderedCallback(){
+        if(!this._init) this.highlightItem(this.template.querySelector('div.item'));
+        this._init = true;
+    }
+
     navigate(event){
         
-        const { name } = event.target.dataset;
+        const { target } = event;
+
+        this.highlightItem(target)
+
+        const { name } = target.dataset;
 
         this.dispatchEvent(new CustomEvent('navigate', {
             composed: true,
@@ -35,4 +47,8 @@ export default class Drawer extends LightningElement {
         }))
     }
 
+    highlightItem(el){
+        this.template.querySelectorAll('div.item').forEach(el => el.classList.remove('active'));
+        el.classList.add('active');
+    }
 }
