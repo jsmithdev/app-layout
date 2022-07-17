@@ -62,6 +62,8 @@ export default class AppLayout extends LightningElement {
 
         if(this.wasLarge === this.isLarge) return;
 
+        this.handleSize()
+
         if(this.isLarge){
             this.isDrawer = true;
             this.content.classList.remove('close');
@@ -90,5 +92,13 @@ export default class AppLayout extends LightningElement {
                 message: 'meow... prrrrr...',
             }
         }))
+    }
+
+    handleSize(){
+        /* https://github.com/w3c/csswg-drafts/issues/4329 */
+        // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+        const vh = window.innerHeight * 0.01;
+        // Then we set the value in the --vh custom property to the root of the document
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
     }
 }
