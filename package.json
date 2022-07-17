@@ -1,7 +1,7 @@
 {
 	"name": "lwc-app-layout",
 	"description": "An app layout for LWC",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"author": "Jamie Smith (me@jsmith.dev)",
 	"engines": {
 		"node": "16.13.x",
