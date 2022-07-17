@@ -3,16 +3,21 @@ import { api, LightningElement } from 'lwc';
 export default class Drawer extends LightningElement {
 
     @api header = 'Menu'
-    @api items = []
+    
+    @api items = [];
 
-    get links(){
+    get views(){
+        
+        // highlight first in list
+        setTimeout(() => this.highlightItem(this.template.querySelector('div.item')), 0);
         
         return this.items.map((name, i) => ({
             name,
             label: name,
             key: `side${i}`
-        }))
+        }));
     }
+
     get version() {
 		try {
 			// eslint-disable-next-line no-undef
@@ -21,14 +26,6 @@ export default class Drawer extends LightningElement {
 			return false;
 		}
 	}
-
-    /**
-     * highlight first in list on init
-     */
-    renderedCallback(){
-        if(!this._init) this.highlightItem(this.template.querySelector('div.item'));
-        this._init = true;
-    }
 
     navigate(event){
         
@@ -48,6 +45,7 @@ export default class Drawer extends LightningElement {
     }
 
     highlightItem(el){
+        if(!el) return;
         this.template.querySelectorAll('div.item').forEach(el => el.classList.remove('active'));
         el.classList.add('active');
     }

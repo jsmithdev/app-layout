@@ -2,11 +2,11 @@
     <div class="drawer-container">
         
         <div class="header">
-            <h2>{header}</h2>
+            {header}
         </div>
         
         <div class="items">
-            <template for:each={links} for:item="item">
+            <template for:each={views} for:item="item">
                 <div 
                     class="item" 
                     onclick={navigate}
@@ -16,7 +16,6 @@
                 </div>
             </template>
         </div>
-        
         
         <div class="footer">
             <template if:true={version}>
